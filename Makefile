@@ -1,15 +1,11 @@
 JAVAC ?= javac
-JAVA ?= java
-SRC := $(wildcard src/*.java)
 BUILD := build
+SOURCES := $(wildcard src/*.java)
 
-.PHONY: all run clean
+.PHONY: all clean
 all:
 	mkdir -p $(BUILD)
-	$(JAVAC) -d $(BUILD) $(SRC)
-
-run: all
-	$(JAVA) -cp $(BUILD) MailServer example.test 20
+	$(JAVAC) -d $(BUILD) $(SOURCES)
 
 clean:
 	rm -rf $(BUILD)

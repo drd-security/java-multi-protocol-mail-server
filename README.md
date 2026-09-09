@@ -73,6 +73,8 @@ java -cp build MailServer <domain> <maxThreads>
 
 For local experimentation, you may need to change SMTP/POP3/IMAP ports from `25/110/143` to unprivileged ports and adapt the educational DNS configuration.
 
+The cleaned portfolio copy uses synthetic local accounts `alice@<domain>` and `bob@<domain>` with the intentionally simple lab password `password`.
+
 ## Concurrency design
 
 - A fixed executor limits the number of concurrent client tasks.

@@ -1,10 +1,8 @@
 /**
- * UserAuthenticator is responsible for authenticating users based on their
- * username and password. It maintains a set of valid users for the local domain.
- * Author
- * - dave ronic donkeng
- * - leslie lucynda tingue
- * Version: 1.0
+ * UserAuthenticator is responsible for the deliberately simple authentication
+ * model used by the academic mail-server project.
+ *
+ * Team project: Dave Ronic DONKENG and one teammate.
  */
 import java.util.HashSet;
 import java.util.Set;
@@ -17,32 +15,20 @@ public class UserAuthenticator {
     public UserAuthenticator(String localDomain) {
         this.localDomain = localDomain;
 
-        // Register only users belonging to this domain
-        if (localDomain.equals("uliege.be")) {
-            validUsers.add("alice@uliege.be");
-            validUsers.add("bob@uliege.be");
-        }
-        else if (localDomain.equals("gembloux.uliege.be")) {
-            validUsers.add("alice@gembloux.uliege.be");
-            validUsers.add("bob@gembloux.uliege.be");
-        }
-        else if (localDomain.equals("info.uliege.be")) {
-            validUsers.add("alice@info.uliege.be");
-            validUsers.add("bob@info.uliege.be");
-        }
+        // Synthetic portfolio accounts. The original lab-specific addresses
+        // were removed from the public-facing copy.
+        validUsers.add("alice@" + localDomain);
+        validUsers.add("bob@" + localDomain);
     }
 
     public boolean authenticate(String username, String password) {
-
-        // Password from assignment
+        // Intentionally simple password for the educational protocol exercise.
         if (!"password".equals(password))
             return false;
 
-        // Must be a local user from this domain
         if (!username.endsWith("@" + localDomain))
             return false;
 
-        // Must exist in this server's local user table
         return validUsers.contains(username);
     }
 

@@ -34,7 +34,7 @@ public class MailStorage {
 
     // Called by SMTP when receiving a local email
     public synchronized  void storeEmailForAddress(Email email) {
-        String to = email.getTo(); // Already normalized
+        String to = email.getTo(); // Déjà normalisé
 
         to = to.trim();
         if (to.startsWith("<") && to.endsWith(">")) {
